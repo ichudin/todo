@@ -3,8 +3,7 @@ var lr = require('tiny-lr'), // Минивебсервер для livereload
     gulp = require('gulp'), // Сообственно Gulp JS
     jade = require('gulp-jade'), // Плагин для Jade
     stylus = require('gulp-stylus'), // Плагин для Stylus
-    nib = require('nib'), 
-	livereload = require('gulp-livereload'), // Livereload для Gulp
+    livereload = require('gulp-livereload'), // Livereload для Gulp
     myth = require('gulp-myth'), // Плагин для Myth - http://www.myth.io/
     csso = require('gulp-csso'), // Минификация CSS
     imagemin = require('gulp-imagemin'), // Минификация изображений
@@ -14,7 +13,7 @@ var lr = require('tiny-lr'), // Минивебсервер для livereload
     server = lr();
 
 
-// Собираем Stylus
+// // Собираем Stylus
 gulp.task('stylus', function() {
     gulp.src('./assets/stylus/screen.styl')
         .pipe(stylus({
@@ -104,9 +103,7 @@ gulp.task('default', function() {
 gulp.task('build', function() {
     // css
     gulp.src('./assets/stylus/screen.styl')
-        .pipe(stylus({
-            use: ['nib']
-        })) // собираем stylus
+        .pipe(stylus()) // собираем stylus
     .pipe(myth()) // добавляем префиксы - http://www.myth.io/
     .pipe(csso()) // минимизируем css
     .pipe(gulp.dest('./build/css/')) // записываем css
